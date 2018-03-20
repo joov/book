@@ -1,0 +1,13 @@
+<H1 *ngIf="book">
+  {{book.title}}
+</H1>
+<div *ngIf="book">
+<dl *ngFor="let entry of entries">
+
+      <dt>{{entry[0]}}</dt>
+
+      <dd *ngIf='entry[0]=="publisher"; else elseBlock'>{{entry[1].name}}, <a href="{{entry[1].url}}">{{entry[1].url}}</a></dd>
+      <ng-template #elseBlock><dd>{{entry[1]}}</dd></ng-template>
+</dl>
+
+</div>

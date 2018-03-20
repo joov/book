@@ -1,0 +1,19 @@
+<div>
+  <h1>Book List</h1>
+  </div>
+  <div>
+  <table border="1">
+    <tr><td>Title</td><td>Subtitle</td><td>Pages</td><td>Authors</td><td>Publisher</td></tr>
+
+    <tr *ngFor="let book of bookCache">
+        <td>{{book.title}}</td>
+        <td>{{book.subtitle}}</td>
+        <td>{{book.numPages}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publisher.name}}</td>
+        <td><a href="/books/details/{{book.isbn}}">{{book.isbn}}</a></td>
+    </tr>
+
+  </table>
+
+</div>
