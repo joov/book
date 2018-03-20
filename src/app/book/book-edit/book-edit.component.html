@@ -1,0 +1,65 @@
+<div *ngIf="book">
+<form #form="ngForm" (ngSubmit)="save(form.value)">
+  <table>
+  <tr>
+    <td>
+      <label for="title">Titel</label>
+    </td>
+    <td>
+      <input
+        type="text"
+        required="true"
+        [ngModel]="book.title" 
+        name="title"
+        #title="ngModel"/>
+    </td>
+    <td><div [hidden] = "!title.errors?.required || title.pristine">Title has to be set</div></td>
+  </tr>
+  <tr>
+    <td>
+      <label for="isbn">ISBN</label>
+    </td>
+    <td>
+    <input
+        type="text"
+        minlength="9"
+        [ngModel]="book.isbn" 
+        name="isbn"
+        #isbn="ngModel"/>
+    </td>
+    <td><div [hidden] = "!isbn.errors?.minlength || isbn.pristine">ISBN has to be at least 9 digits</div></td>
+  </tr>
+  <tr>
+      <td>
+        <label for="absttract">Abstract</label>
+      </td>
+      <td>
+      <input
+          type="textarea"
+          style="width:250px;height:150px;"
+          [ngModel]="book.abstract" 
+          name="abstract"
+          #abstract="ngModel"/>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <label for="author">Author</label>
+        </td>
+        <td>
+        <input
+            type="text"
+            required="true"
+            [ngModel]="book.author" 
+            name="author"
+            #author="ngModel"/>
+        </td>
+        <td><div [hidden] = "!author.errors?.required || author.pristine">Author has to be set</div></td>
+      </tr>
+    </table>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+</form>
+<pre>
+{{book | json }}
+</pre>
+</div>

@@ -11,6 +11,6 @@ export class ConfirmCandeactivateGuard implements CanDeactivate<BookDetailsCompo
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
       console.log('Guard called');
-      return false;
+      return true;
   }
 }
