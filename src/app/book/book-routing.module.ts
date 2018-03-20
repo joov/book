@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookComponent } from './book.component';
+import { ConfirmCandeactivateGuard } from './share/confirm-candeactivate.guard';
 
 
 
@@ -11,7 +12,9 @@ const ROUTES: Routes = [
   component: BookComponent,
   children: [
     { path: '', component: BookListComponent},
-    { path: 'details/:isbn', component: BookDetailsComponent }
+    { path: 'details/:isbn',
+      canDeactivate: [ConfirmCandeactivateGuard],
+      component: BookDetailsComponent }
   ]
 }
 ];
