@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { MouseCursorComponent } from './mouse-cursor/mouse-cursor.component';
 import { BookComponent } from './book/book.component';
 
@@ -11,7 +11,7 @@ export const ROUTES: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(ROUTES)],
+    imports: [RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})],
     exports: [RouterModule]
 })
 export class AppRoutineModule {}
