@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../share/Book';
 import { BookDataService } from '../book-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sse-wze-book-edit',
@@ -12,7 +14,10 @@ export class BookEditComponent implements OnInit {
 
   private book: Book;
 
-  constructor(private route: ActivatedRoute, private bookData: BookDataService) { }
+  constructor(private route: ActivatedRoute,
+    private bookData: BookDataService,
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
     this.route.params.mergeMap(
@@ -21,11 +26,23 @@ export class BookEditComponent implements OnInit {
         error => console.log(error.message),
         () => console.log('BookDetails finished'));
   }
-  save(book: Book) {
-    let entries = Object.entries(book);
+
+  save(book) {
+    const entries = Object.entries(book);
     entries.forEach(element => {
       console.log(element[0], ': ', element[1]);
     });
 
+    const updatedBook = Object.assign({}, this.book, book);
+    this.bookData.updateBook(updatedBook)
+      .subscribe(b => {
+        console.log('Book updated');
+        this.router.navigate(['../../..'], {relativeTo: this.route});
+      },
+                 e => console.error('Book could not be updated'),
+                 () => console.log('Finished update')
+    );
+
   }
+
 }

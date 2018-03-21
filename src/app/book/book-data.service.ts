@@ -22,4 +22,15 @@ export class BookDataService {
   getBookByIsbn(isbn: string): Observable<Book> {
     return this.http.get<Book>(`${BASE_URL}/${isbn}`);
   }
+
+  createBook(book: Book): Observable<Book> {
+    const isbn = book.isbn;
+    return this.http.post<Book>(`${BASE_URL}`, book);
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    const isbn = book.isbn;
+    return this.http.put<Book>(`${BASE_URL}/${isbn}`, book);
+  }
+
 }

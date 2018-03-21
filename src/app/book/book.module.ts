@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BookRoutingModule } from './book-routing.module';
 import { BookListComponent } from './book-list/book-list.component';
@@ -9,19 +9,24 @@ import { BookDataService } from './book-data.service';
 import { BookComponent } from './book.component';
 import { ConfirmCandeactivateGuard } from './share/confirm-candeactivate.guard';
 import { BookEditComponent } from './book-edit/book-edit.component';
+import { IsbnValidatorDirective } from './share/IsbnValidatorDirective';
+import { BookNewComponent } from './book-new/book-new.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     BookRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     BookComponent,
     BookListComponent,
     BookDetailsComponent,
-    BookEditComponent],
+    BookEditComponent,
+    IsbnValidatorDirective,
+    BookNewComponent],
   providers: [BookDataService,
     ConfirmCandeactivateGuard]
 })

@@ -22,12 +22,12 @@
     <td>
     <input
         type="text"
-        pattern="(978|979)-\d+-\d+-\d+-\d"
+        present="true"
         [ngModel]="book.isbn" 
         name="isbn"
         #isbn="ngModel"/>
     </td>
-    <td><div [hidden] = "!isbn.errors?.pattern || isbn.pristine">ISBN has to be at least 9 digits</div></td>
+    <td><div [hidden] = "!isbn.errors?.present || isbn.pristine">ISBN has to be at least 9 digits</div></td>
   </tr>
   <tr>
       <td>

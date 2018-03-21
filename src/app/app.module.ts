@@ -8,6 +8,7 @@ import { MouseCursorComponent } from './mouse-cursor/mouse-cursor.component';
 import { TitleBoxComponent } from './title-box/title-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutineModule } from './app-routing.module';
+import { BookNewComponent } from './book/book-new/book-new.component';
 
 
 @NgModule({
