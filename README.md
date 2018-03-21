@@ -1,5 +1,9 @@
 # Book
 
+Simdple book list with edit/create function. Data backend is `bookmokey-api`.
+Install with `npm install bookmonkey-api` and run with command `bookmonkey-api`.
+It starts a REST-Server with some books on port `4730`.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
 ## Development server
