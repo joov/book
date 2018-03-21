@@ -12,6 +12,7 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { IsbnValidatorDirective } from './share/IsbnValidatorDirective';
 import { BookNewComponent } from './book-new/book-new.component';
 import { TooltipDirective } from './share/tooltip.directive';
+import { ShoutPipe } from './share/shout.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { TooltipDirective } from './share/tooltip.directive';
     BookEditComponent,
     IsbnValidatorDirective,
     BookNewComponent,
-    TooltipDirective],
+    TooltipDirective,
+    ShoutPipe],
   providers: [BookDataService,
     ConfirmCandeactivateGuard]
 })

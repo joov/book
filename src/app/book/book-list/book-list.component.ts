@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { BookDataService } from '../book-data.service';
 import { Book } from '../share/book';
 import { ISubscription } from 'rxjs/Subscription' ;
+import { Observable } from 'rxjs/Observable' ;
 
 
 @Component({
@@ -16,12 +17,14 @@ export class BookListComponent implements OnInit {
 
   private bookCache: Book[];
   private subscription: ISubscription;
+  private bookObservable: Observable<Book[]>;
 
   ngOnInit() {
-    this.subscription = this.bookData.getBooks().subscribe(
-      result => this.bookCache = result,
-      error => console.error(error.message),
-      () => console.log('Book service completed'));
+    this.bookObservable = this.bookData.getBooks();
+  //   this.subscription = this.bookData.getBooks().subscribe(
+  //     result => this.bookCache = result,
+  //     error => console.error(error.message),
+  //     () => console.log('Book service completed'));
   }
 
 }

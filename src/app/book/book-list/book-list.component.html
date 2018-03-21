@@ -5,16 +5,16 @@
   <table class="rowBorder table table-striped">
     <tr><th>Title</th><th>Subtitle</th><th>Pages</th><th>Authors</th><th>Publisher</th><th>Edit</th></tr>
 
-    <tr *ngFor="let book of bookCache">
+    <tr *ngFor="let book of bookObservable | async">
         <td>{{book.title}}</td>
         <td>{{book.subtitle}}</td>
         <td>{{book.numPages}}</td>
         <td>{{book.author}}</td>
         <td>{{book.publisher.name}}</td>
-        <td><a [routerLink]="['details', book.isbn]" [tooltip]="'Edit ' + book.isbn">{{book.isbn}}</a></td>
+        <td><a [routerLink]="['details', book.isbn]" [tooltip]="'Edit ' + book.isbn  | shout">{{book.isbn}}</a></td>
     </tr>
 
   </table>
 
-  <a [routerLink]="['new']" tooltip="Create new book">New Book</a> 
+  <a [routerLink]="['new']" [tooltip]="'Create new book' | shout">New Book</a> 
 </div>

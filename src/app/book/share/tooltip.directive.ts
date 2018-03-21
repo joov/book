@@ -16,7 +16,6 @@ export class TooltipDirective {
   tooltipElement = document.createElement('div');
 
   constructor(_elementRef: ElementRef) {
-    //this.tooltipElement.hidden = true;
     _elementRef.nativeElement.appendChild(this.tooltipElement);
    }
 
@@ -24,14 +23,10 @@ export class TooltipDirective {
   onmouseenter() {
     this.tooltipElement.innerText = this.tooltip ;
     this.tooltipElement.hidden = null;
-
-
-    console.log('Mouse entered', this.tooltip);
   }
 
   @HostListener('mouseleave')
   onmouseleave() {
-    console.log('Mouse leave');
     this.tooltipElement.hidden = true;
   }
 }
