@@ -13,6 +13,7 @@ import { IsbnValidatorDirective } from './share/IsbnValidatorDirective';
 import { BookNewComponent } from './book-new/book-new.component';
 import { TooltipDirective } from './share/tooltip.directive';
 import { ShoutPipe } from './share/shout.pipe';
+import { BmRedDirective } from './share/bm-red.directive';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ShoutPipe } from './share/shout.pipe';
     IsbnValidatorDirective,
     BookNewComponent,
     TooltipDirective,
-    ShoutPipe],
+    ShoutPipe,
+    BmRedDirective],
   providers: [BookDataService,
     ConfirmCandeactivateGuard]
 })
