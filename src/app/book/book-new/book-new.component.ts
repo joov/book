@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms' ;
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms' ;
 import { Book } from '../share/Book';
 import { IsbnValidatorDirective } from '../share/IsbnValidatorDirective';
 import { BookDataService } from '../book-data.service';
@@ -21,13 +21,24 @@ export class BookNewComponent implements OnInit {
     private router: Router,
     private location: Location) {}
 
+    validateIsbn(c: FormControl) {
+      console.log('validate called');
+      const ISBN_REGEX = new RegExp('(978|979)-(\d)+-(\d)+-(\d)+-(\d)' );
+
+      return ISBN_REGEX.test(c.value) ? null : {
+          validateEmail: {
+              valid: false
+          }
+      };
+  }
+
   ngOnInit() {
     this.book = {title: '', isbn: '', subtitle: '', author: '', publisher: {name: '', url: ''}, abstract: ''} ;
 
     this.form = this.fb.group({
       'title': [this.book.title, Validators.required],
       'isbn': [this.book.isbn,
-        Validators.compose([Validators.required, Validators.minLength(11)])]
+        Validators.compose([Validators.required, this.validateIsbn])]
     });
   }
 

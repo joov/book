@@ -12,11 +12,11 @@ import { FormControl, NG_VALIDATORS } from '@angular/forms';
 export class IsbnValidatorDirective {
     validateIsbn(c: FormControl) {
         const ISBN_REGEX = new RegExp('(978|979)-(\d)+-(\d)+-(\d)+-(\d)' );
-    
+
         return ISBN_REGEX.test(c.value) ? null : {
-        validateEmail: {
-            valid: false
-        }
+            validateEmail: {
+                valid: false
+            }
         };
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { BookDataService } from '../book-data.service';
 import { Book } from '../share/book';
 import { ISubscription } from 'rxjs/Subscription' ;
@@ -6,6 +6,7 @@ import { ISubscription } from 'rxjs/Subscription' ;
 
 @Component({
   selector: 'sse-wze-book-list',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
@@ -21,10 +22,6 @@ export class BookListComponent implements OnInit {
       result => this.bookCache = result,
       error => console.error(error.message),
       () => console.log('Book service completed'));
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
 }

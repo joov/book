@@ -2,8 +2,8 @@
   <h1>Book List</h1>
   </div>
   <div>
-  <table border="1">
-    <tr><td>Title</td><td>Subtitle</td><td>Pages</td><td>Authors</td><td>Publisher</td></tr>
+  <table class="rowBorder table table-striped">
+    <tr><th>Title</th><th>Subtitle</th><th>Pages</th><th>Authors</th><th>Publisher</th><th>Edit</th></tr>
 
     <tr *ngFor="let book of bookCache">
         <td>{{book.title}}</td>
@@ -11,10 +11,10 @@
         <td>{{book.numPages}}</td>
         <td>{{book.author}}</td>
         <td>{{book.publisher.name}}</td>
-        <td><a href="/books/details/{{book.isbn}}">{{book.isbn}}</a></td>
+        <td><a [routerLink]="['details', book.isbn]" [tooltip]="'Edit ' + book.isbn">{{book.isbn}}</a></td>
     </tr>
 
   </table>
 
-  <a href="books/new">New Book</a> 
+  <a [routerLink]="['new']" tooltip="Create new book">New Book</a> 
 </div>
