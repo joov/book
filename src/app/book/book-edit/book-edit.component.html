@@ -1,5 +1,6 @@
 <div *ngIf="book">
-<form #form="ngForm" (ngSubmit)="save(form.value)">
+    <h1>Edit {{book.isbn}}</h1>
+    <form #form="ngForm" (ngSubmit)="save(form.value)">
   <table>
   <tr>
     <td>
@@ -14,20 +15,6 @@
         #title="ngModel"/>
     </td>
     <td><div [hidden] = "!title.errors?.required || title.pristine">Title has to be set</div></td>
-  </tr>
-  <tr>
-    <td>
-      <label for="isbn">ISBN</label>
-    </td>
-    <td>
-    <input
-        type="text"
-        present="true"
-        [ngModel]="book.isbn" 
-        name="isbn"
-        #isbn="ngModel"/>
-    </td>
-    <td><div [hidden] = "!isbn.errors?.present || isbn.pristine">ISBN has to be at least 9 digits</div></td>
   </tr>
   <tr>
       <td>
